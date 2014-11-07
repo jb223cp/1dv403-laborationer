@@ -2,18 +2,34 @@
 
 window.onload = function(){
 
-	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
-		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-
-
-
-
-
-
+		  try{
+			  	if (str.length==0){
+			  		throw new Error("Mata in ett värde!"); //Throws exceptions if string has no elements (is empty)
+			  	}
+			  	var i;
+		        var newString="";
+		        
+		        /* Iterates throught string (array of characters).
+		         * Compares if current character is upper respecctive lower case
+		         * ...and if it is, changes it to lower/upper and adds to the new string
+		         */
+		        for (i=0; i<str.length;i+=1){
+			          	if (str[i]==str[i].toUpperCase()){
+			          		newString=newString+str[i].toLowerCase();
+			          	}else if (str[i]==str[i].toLowerCase()){
+			          		newString=newString+str[i].toUpperCase();
+			          	}
+		          	
+		        }
+		        var finalString = newString.replace(/a/gi, "#");//http://www.w3schools.com/jsref/jsref_replace.asp , Replace characters gi-global insensitive
+		        return finalString;
+		  	
+		  }
+		  catch(Error){
+		  	return Error.message;
+		  }
 	};
 	// ------------------------------------------------------------------------------
 
