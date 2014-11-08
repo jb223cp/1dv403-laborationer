@@ -7,11 +7,30 @@ window.onload = function(){
 		
 
 
-			// Din kod här.
+		var now= new Date();
+		var birth = Date(date);
+		
+		birth.getFullYear()=now.getFullYear();
+		
+		var difference = birth.getTime()-now.getTime();
+		
+		if (difference<0){
+			
+			
+			return (difference/(1000*60*60*24));
+			
+		} else if (difference > 0){
+			return (difference/(1000*60*60*24));
+		}else{
+			return 0;
+		}
+		
+		
+	
 
 
 
-
+          // return answer;
 	};
 	// ------------------------------------------------------------------------------
 
