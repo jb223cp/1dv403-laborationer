@@ -6,31 +6,52 @@ window.onload = function(){
 	var birthday = function(date){
 		
 
-
-		var now= new Date();
-		var birth = Date(date);
+                
 		
-		birth.getFullYear()=now.getFullYear();
 		
-		var difference = birth.getTime()-now.getTime();
+		try{
+			var now= new Date();
+			
+			/*This example is from course book, page 132*/
+			var pattern = /\d{4}-\d{2}-\d{2}/;
+			if ((!(pattern.test(date)))|| date==""){
+			    throw new Error("Datumet är inte i gilltigt format!")
+			}
+			var c = new Date(date);
+			
+			c.setFullYear(now.getFullYear());
+			
+                 	          var b= Math.floor((Date.parse(c))/(1000*60*60*24));//Math.floor round on lower value. This is important if time is more then 12:00 AM
+			var a = Math.floor((now.getTime())/(1000*60*60*24));
+	
+			if (b<a){
+			    c.setFullYear(+((now.getFullYear()))+1);
+			    b=Math.floor(Date.parse(c)/(1000*60*60*24));
+			}
+			var difference = b-a;
+			
+			if (difference<0){
+			
+				return (difference);
+				
+			} else if (difference > 0){
+				return (difference);
+			}else{
+				return 0;
+		          }
+		}
+		catch(Error){
+			/* After catch is finished, function still returns value (in fail format)
+			 * but that value still pass the try test in next function...
+			 */
+		          p.classList.add( "error"); // Växla CSS-klass, IE10+
+		          console.log(Error.message);
+		          p.innerHTML = Error.message;
+		          return Error.message;
+			
 		
-		if (difference<0){
-			
-			
-			return (difference/(1000*60*60*24));
-			
-		} else if (difference > 0){
-			return (difference/(1000*60*60*24));
-		}else{
-			return 0;
 		}
 		
-		
-	
-
-
-
-          // return answer;
 	};
 	// ------------------------------------------------------------------------------
 
