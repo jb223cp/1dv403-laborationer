@@ -2,31 +2,38 @@
 
 var makePerson = function(persArr){
     
-    var obj={};
     
-    // Makes new array with elements of persArr array property "name"
-    var names = persArr.map(function(name){
-        return name; //.name + " ,";
-    });
-    names.sort();
+    var ages=[];
+    var names=[];
     
-    // Make new array out of property "age" from persArr
-    var ages = persArr.map(function(age){
-        return age;
+    
+    // Makes new array out of property "age" from persArr
+    ages = persArr.map(function(age){
+        return age.age;
     });
     
-    var minAge=Math.min.apply(Math, ages);
-    var maxAge=Math.max.apply(Math, ages);
-    obj.minAge= minAge,
-    obj.maxAge= maxAge,
-    obj.averageAge=Math.round((ages.reduce(function(a,b){return a+b;}))/ages.length) ,
-    obj.names= names,
-
-    return obj{names:names,minAge:minAge,maxAge:maxAge,averageAge:averageAge};
-	// Din kod här...
-
+     // Makes new array out of property "name" from persArr
+    names = persArr.map(function (name){
+        return name.name;
+    });
+    
+    /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+     * Example: Sorting non-ASCII characters, for sorting Swedish characters
+     */
+    names.sort(function (a, b) {
+        return a.localeCompare(b);
+    });
+    
+    var namesTogether=names.join(", ");
+    
+    return {
+        names:namesTogether,
+        minAge:Math.min.apply(Math, ages),
+        maxAge:Math.max.apply(Math, ages),
+        averageAge:Math.round((ages.reduce(function(a,b){return a+b;}))/ages.length)
+       } ;
 }
-var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
-//[{name: "Jasmin Bejtovic", age: 36}, {name: "Nils Grandelius", age: 21}, {name: "Michael de Verdier", age: 26},{name: "Viktor Forsberg", age: 31}];
+
+var data=[{name: "Jasmin Bejtovic", age: 36}, {name: "Nils Grandelius", age: 21}, {name: "Michael de Verdier", age: 26},{name: "Viktor Forsberg", age: 31}];
 var obj=makePerson(data);
 console.log(obj);
