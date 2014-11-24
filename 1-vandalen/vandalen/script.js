@@ -9,6 +9,7 @@ var makePerson = function(persArr){
     
     // Makes new array out of property "age" from persArr
     ages = persArr.map(function(age){
+        
         return age.age;
     });
     
@@ -30,10 +31,11 @@ var makePerson = function(persArr){
         names:namesTogether,
         minAge:Math.min.apply(Math, ages),
         maxAge:Math.max.apply(Math, ages),
-        averageAge:Math.round((ages.reduce(function(a,b){return a+b;}))/ages.length)
+        averageAge:Math.round((ages.reduce(function(a,b){return a+b;}))/ages.length)//Föreläsning 3
        } ;
 }
 
-var data=[{name: "Jasmin Bejtovic", age: 36}, {name: "Nils Grandelius", age: 21}, {name: "Michael de Verdier", age: 26},{name: "Viktor Forsberg", age: 31}];
+//var data=[{name: "Jasmin Bejtovic", age: 36}, {name: "Nils Grandelius", age: 21}, {name: "Michael de Verdier", age: 26},{name: "Viktor Forsberg", age: 31}];
+var data=[{ name: "John Häggerud", age: "gg" }, { name: "Johan Leitet", age: 36 }, { name: "Mats Loock", age: 46 }]
 var obj=makePerson(data);
 console.log(obj);

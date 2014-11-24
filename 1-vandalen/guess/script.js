@@ -12,16 +12,18 @@ window.onload = function(){
 		
 		
 		try{
-			if (number != parseInt(number, 10)){  //http://stackoverflow.com/questions/4514602/type-checking-in-javascript
+			if (number != parseInt(number, 10)){  //http://stackoverflow.com/questions/4514602/type-checking-in-javascript*/
 				throw new Error("FEL! " + number + " kan inte tolkas som ett heltal.");
 			}
+			
 			else if (number<0 || number>100)
 			{
 				throw new Error("FEL! " + number + " är utanför intervallet 0 - 100");
 			}
 		}
 		catch(Error){
-			return [false, Error.message];
+			//throw new Error("parseInt failed: " + number)
+		    return [false, Error.message];
 		}
 		
 		count+=1;
