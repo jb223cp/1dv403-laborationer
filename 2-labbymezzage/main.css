@@ -1,0 +1,112 @@
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body{
+    background-color:#D7ECFB;
+}
+
+h1{
+    margin-left:8%;
+    margin-right:auto;
+    margin-top:2%;
+    font-family: 'Bangers', cursive;
+    font-size:2.8em;
+    color:#0099FF;
+    
+}
+img.icons{
+    /*margin-right:2%;
+    margin-top:4%;*/
+    float:right;
+}
+time{
+    float:right;
+}
+
+
+section.main{
+    width:40%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:6%;
+    background-color:#082338;
+    border-style: solid;
+    border-width: 1px;
+    border-color:black;
+    border-radius:1.2em;
+    box-shadow: 10px 10px 5px #888888;
+    
+}
+section.message{
+    /*margin-top:2%;*/
+    margin-bottom:2%;
+    background-color:#D7ECFB;
+    width:94%;
+    margin-right:auto;
+    margin-left:auto;
+    border-radius:1.2em;
+    border-style: solid;
+    border-width: 1px;
+    border-color:black;
+    
+}
+article{
+    background-color:#6588A3;
+    border-style: solid;
+    border-width: 1px;
+    border-color:#333333;
+    width:96%;
+    margin-top:4%;
+    margin-left:2%;
+    margin-right:2%;
+    color:#333333;
+     font-family:tahoma;
+}
+label{
+    float:right;
+    margin-right:3%;
+    margin-top:3%;
+    font-family:tahoma;
+}
+textarea{
+    width:96%;
+    margin-left:2%;
+    margin-right:2%;
+    margin-top:5%;
+    margin-top:5%;
+}
+
+fieldset{
+    width:96%;
+    margin-left:2%;
+    margin-right:2%;
+}
+input{
+    float:right;
+    margin-right:3%;
+    margin-top:1%;
+    margin-bottom:1%;
+}
