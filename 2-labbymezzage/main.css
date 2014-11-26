@@ -37,11 +37,7 @@ h1{
     color:#0099FF;
     
 }
-img.icons{
-    /*margin-right:2%;
-    margin-top:4%;*/
-    float:right;
-}
+
 time{
     float:right;
 }
@@ -67,13 +63,13 @@ section.message{
     width:94%;
     margin-right:auto;
     margin-left:auto;
-    border-radius:1.2em;
+    /*border-radius:1.2em;*/
     border-style: solid;
     border-width: 1px;
     border-color:black;
     
 }
-article{
+.messageContainer{
     background-color:#6588A3;
     border-style: solid;
     border-width: 1px;
@@ -104,9 +100,15 @@ fieldset{
     margin-left:2%;
     margin-right:2%;
 }
-input{
+ .send{
     float:right;
     margin-right:3%;
     margin-top:1%;
     margin-bottom:1%;
 }
+ .buttons{
+    float:right;
+    border-color:red;
+    border-style: solid;
+    border-width: 1px;
+} 

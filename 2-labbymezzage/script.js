@@ -2,18 +2,26 @@
 
 
     var MessageBoard = {
+    	
+    messages: [],
 
 	init: function(){
 		
-		var now= new Date();
-		var messages = [];
+		var sendCurrent = document.getElementById("button");
+		sendCurrent.onclick = MessageBoard.getAll;
 		
-		Message[0] = new Message("test", now.getHours()+":"+now.getMinutes()+":"+now.getSeconds());
-		Message[0] = new Message("Penny", now.getHours()+":"+now.getMinutes()+":"+now.getSeconds());
-		Message[0] = new Message("Penny", now.getHours()+":"+now.getMinutes()+":"+now.getSeconds());
+	},	
+	
+	getAll: function(){
+		
+		var text = document.getElementById("area");
 
-		
-	}	
+		MessageBoard.messages.push(new Message(text.value, new Date()));
+		console.log(MessageBoard.messages);
+		var newMessage = MessageBoard.messages.length - 1;
+		/*MessageBoard.renderMessage(newMessage);*/
+	},
 	
 };
-	window.onload = MessageBoard.init;
+
+window.onload = MessageBoard.init;
