@@ -20,11 +20,33 @@ var Message = function Message(message,date) {
     }
     
     Message.prototype.toString=function(){
+        
         return this.getText()+" ("+ this.getDate()+") ";
     }
     
-    Message.prototype.getHTMLtext=function(){
+    Message.prototype.getHTMLText = function() {
         
+        return this.getText().replace(/\n/g, "<br />");
+    }
+    
+    
+    Message.prototype.getDateText = function(){
+ 
+     	var hours = this.getDate().getHours();
+     	var minutes =  this.getDate().getMinutes();
+     	var seconds =  this.getDate().getSeconds();
+     	
+     	if(hours<10){
+     	    hours="0"+hours;
+     	}
+     	if(minutes<10){
+     	    minutes="0"+minutes;
+     	}
+     	if(seconds<10){
+     	    seconds="0"+seconds;
+     	}
+    
+     	return hours +":"+ minutes +":"+ seconds;
     }
     
   // ...
