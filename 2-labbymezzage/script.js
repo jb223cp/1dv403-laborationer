@@ -72,7 +72,7 @@
 		var messageContainer=document.createElement("article");
         
        //Create p tag for content of messsage, and tag time for time when message was made
-        var content = document.createElement("p");
+        var content = document.createElement("section");
         var messageDate = document.createElement("time");
         
         
@@ -83,8 +83,8 @@
         messageDate.innerHTML = MessageBoard.messages[index].getDateText();
         
         //Creates structure
-        content.appendChild(buttonDelete);
-        content.appendChild(buttonTime);
+        messageContainer.appendChild(buttonDelete);
+        messageContainer.appendChild(buttonTime);
         messageContainer.appendChild(content);
         
         content.appendChild(messageDate);
