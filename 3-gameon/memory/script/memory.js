@@ -24,34 +24,59 @@ var Memory = {
         
         var table=document.getElementById("board");
         var placeHolder=0;
-        var index=0;
-            
         
+            
+        var tableRow,imgTag,link,tableCol;
         for (var i=0; i<rows; ++i){
             
-            var tableRow = document.createElement("tr");
+            tableRow = document.createElement("tr");
             table.appendChild(tableRow);
             
                for (var j=0; j<cols;++j){
-                   var tableCol=document.createElement("td");
-                   var imgTag =document.createElement("img");
-                   var link = document.createElement("a");
+                   tableCol=document.createElement("td");
+                   imgTag =document.createElement("img");
+                   link = document.createElement("a");
                    imgTag.setAttribute("src", "pics/0.png");
                    imgTag.setAttribute("alt", "?");
                    link.setAttribute("href", "#");
+                   link.setAttribute("class", "link");
                    placeHolder=(((rows*(i+1))-rows)+j);
-                   index=Memory.squares[placeHolder];
-                   link.setAttribute("id", index);
+                   
+                   link.setAttribute("id", placeHolder);
                    
                    tableRow.appendChild(tableCol);
                    tableCol.appendChild(link);
                    link.appendChild(imgTag);
                }
         }
+        var picNumber=0;
+        var unknown;
+        var currentNumber=0;
+        var previousNumber;
+        var el=document.body.getElementsByClassName('link');
+        for(var c=0;c<el.length;c++) {
+            
+           el[c].onclick = function() {
+           unknown=this.id;
+           
+           
+           
+           picNumber=Memory.squares[this.id];
+           if (previousNumber===picNumber){
+               alert("rätt");
+           }
+           var current = document.getElementById(unknown);
+           current.firstChild.setAttribute("src", "pics/"+picNumber+".png");
+           
+           previousNumber=picNumber;
+           
+           
+           
+        }
+        }
         
-       
     }
-
+    
 };
 
 window.onload = Memory.init;
