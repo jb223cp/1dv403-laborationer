@@ -56,6 +56,7 @@ var Memory = {
         var previousPosition;
         var previousNumber;
         var counter=1;
+        var flag=true;
         
         var el=document.body.getElementsByClassName('link');
         for(var c=0;c<el.length;c++) {
@@ -63,6 +64,13 @@ var Memory = {
                el[c].onclick = function() {
                    
                    unknown=this.id;
+                   var isOdd = counter%2;
+                   
+                   if(unknown===previousPosition && isOdd===0){
+                       event.preventDefault(); 
+                   }
+                   
+                   
                    
                    
                    
@@ -73,7 +81,7 @@ var Memory = {
                    
                    
                        
-                       var isOdd = counter%2;
+                       
                        
                        if (isOdd===1){
                            
@@ -84,11 +92,14 @@ var Memory = {
                        }
                        else{
                            
+                           
+                           
+                           
                                    current.firstChild.setAttribute("src", "pics/"+picNumber+".png");
                                    /*current.setAttribute("onclick", "return false");*/
                            
                             
-                            if (previousNumber===picNumber && unknown!=previousPosition){
+                                if (previousNumber===picNumber && unknown!=previousPosition){
                                 
                                    
                                    previous.firstChild.setAttribute("src", "pics/"+picNumber+".png");
@@ -107,18 +118,24 @@ var Memory = {
                                            previous.removeAttribute("onclick");
                                            previous.setAttribute("href", "#");
                                            /*current.firstChild.setAttribute("onclick", "return false");*/
-                                           
+                                           callback();
                                        }, 1000);
-                                    
+                                   
                                 }
                            
                            
                        }
                        
                    
-                       counter++;
+                       
+                       
                        previousNumber=picNumber;
                        previousPosition=unknown;
+                       
+                       counter++;
+                       var queue=2;
+                       queue=counter;
+                       
                        
                        return false;
                
