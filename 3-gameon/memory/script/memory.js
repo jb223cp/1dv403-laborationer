@@ -98,7 +98,7 @@ var Memory = {
                            current.firstChild.setAttribute("src", "pics/"+picNumber+".png");
                            /*current.setAttribute("onclick", "return false");*/
                            current.removeAttribute("href");
-                           current.setAttribute("class","linksolved");
+                           /*current.setAttribute("class","linksolved");*/
                            
                        }
                        
