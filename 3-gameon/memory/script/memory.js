@@ -81,6 +81,7 @@ var Memory = {
                    unknown=this.id;
                    var isOdd = counter%2;
                    
+                   // checks two in a row clicks on the same field (not needed but....)
                    if(unknown===previousPosition && isOdd===0){
                        event.preventDefault(); 
                    }
@@ -90,6 +91,8 @@ var Memory = {
                    var current = document.getElementById(unknown);
                    var previous = document.getElementById(previousPosition);
        
+       
+                   //Checks if first or second field in pair is opened
                        if (isOdd===1){
                            
                            current.firstChild.setAttribute("src", "pics/"+picNumber+".png");
@@ -98,36 +101,38 @@ var Memory = {
                            current.setAttribute("class","linksolved");
                            
                        }
+                       
+                   //Here starts code for guessing       
                        else{
-             
-                                   current.firstChild.setAttribute("src", "pics/"+picNumber+".png");
+                           
+                                current.firstChild.setAttribute("src", "pics/"+picNumber+".png");
                          
+                                // Checks if pair matchs
                                 if (previousNumber===picNumber && unknown!=previousPosition){
-                                
+                                   
+                                   
+                                   //If pair is found, link is disabled by removing href attribute and class of elements is changed to linksolved
                                    previous.firstChild.setAttribute("src", "pics/"+picNumber+".png");
-                                   previous.setAttribute("onclick", "return false");
+                                   previous.removeAttribute("href");
+                                   current.removeAttribute("href");
                                    previous.setAttribute("class","linksolved");
                                    current.setAttribute("class","linksolved");
-                                   current.setAttribute("onclick", "return false");
+                                   
                                    
                                 }
                                 else{
                                     
-                                   /*questionMark=document.body.getElementsByClassName('link');*/
+                                   //Flag is down, so when the code reach this point, it is not possible to execute onClick
                                    flag=false;
 
                      
                                         setTimeout(function () {
+                                            
+                                            //After one second delay, flag is up again and onClick is possible to execute
                                                flag=true;
                                                current.firstChild.setAttribute("src", "pics/0.png");
                                                previous.firstChild.setAttribute("src", "pics/0.png");
-                                               /*current.removeAttribute("onclick");
-                                               previous.removeAttribute("onclick");
-                                               previous.setAttribute("href", "#");
                                                
-                                               previous.setAttribute("class","link");
-                                               current.setAttribute("class","link");*/
-                                        
                                            }, 800);
                                   
                                 }
