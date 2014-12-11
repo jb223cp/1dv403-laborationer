@@ -8,16 +8,19 @@ function Quiz() {
     var counterGlobal=0;
     var counterPartial=0;
     start.enabled=true;
+    
+//Calls the function that gets one question from third part    
     start.onclick = function() { 
              Question("http://vhost3.lnu.se:20080/question/1"); 
         }
         
+        
+//Function that gets one question from adress in argument
         function Question(URL){
             
             var xhr = new XMLHttpRequest();
             xhr.open("GET", URL, true);
-             xhr.send(null); 
-            /*var URL = "http://vhost3.lnu.se:20080/question/1";*/
+            xhr.send(null); 
             var objQuestion;
             
             xhr.onreadystatechange = function() {
@@ -25,26 +28,26 @@ function Quiz() {
                 if((xhr.readyState === 4 && xhr.status===200) || xhr.status==304){
                                  
                         objQuestion = JSON.parse(xhr.responseText);
-                        console.log(xhr.responseText);
                         var questionParagraph = document.createElement("p");
                         questionParagraph.setAttribute("class","question");
                         questionParagraph.innerHTML = objQuestion.question;
                         var section = document.getElementById("container");
                         section.appendChild(questionParagraph);
                         
+                        //send.enabled=true;
                         
-                        send.enabled=true;
-                        
+                        //Calls the function that sends answer on adress that I get from previous adress
                         send.onclick = function() { 
                             /*start.disabled=true;*/
                             counterGlobal+=1;
                             Answer(objQuestion.nextURL); 
-                                  
                         } 
                 }; 
             }
         }
         
+        
+//Function that sends the answer on adress in argument
         function Answer(URL1){
             
             var xhrPost = new XMLHttpRequest();
@@ -85,10 +88,7 @@ function Quiz() {
                             answerParagraphFailed.innerHTML = objResponse.message + " and this is attempt number " +counterPartial;
                             
                             var section2 = document.getElementById("container");
-                            section2.appendChild(answerParagraphFailed);
-                            
-                            
-                        
+                            section2.appendChild(answerParagraphFailed);  
                     }
             }
         }
