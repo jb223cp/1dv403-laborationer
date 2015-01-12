@@ -60,6 +60,8 @@ var Gallery={
       var i;
       var j;
       
+      
+/************** Variables width and height that takes the value of widest and heighest thumbnail in array ******/      
      var width= Math.max.apply(Math,Gallery.array.map(function(array){
          
          return array.thumbWidth;
@@ -72,7 +74,7 @@ var Gallery={
          
      }))
      
-     //console.log(width);
+     
       
       var pwdBody = document.getElementById("pwd");
       
