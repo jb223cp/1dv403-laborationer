@@ -10,15 +10,7 @@ function Quiz() {
  
                 document.getElementById("start").addEventListener("click", function(){
                     
-                             /*var xhr = new XMLHttpRequest();
-                             var URL = "http://vhost3.lnu.se:20080/question/1";
-                             xhr.open("GET", URL, true);
-                             xhr.send(null); */
-                    
-                    
-                    
-                    
-                            
+
 
                             if((xhr.readyState === 4 && xhr.status===200) || xhr.status==304){
                              
