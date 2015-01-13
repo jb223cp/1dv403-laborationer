@@ -36,7 +36,7 @@ var Gallery={
                      xhr.open("GET", URL, true);
                      xhr.send(null); 
                      xhr.onreadystatechange = function(){
-                     if((xhr.readyState === 4 && xhr.status===200) || xhr.status==304){
+                    /* if((xhr.readyState === 4 && xhr.status===200) || xhr.status==304){
                              
                                   Gallery.array = JSON.parse(xhr.responseText);
                                   console.log(Gallery.array);
@@ -47,7 +47,25 @@ var Gallery={
                            console.log("hej");
                            
                        }
+                     }*/
+                     if(xhr.readyState === 4){
+                         
+                         if(xhr.status===200){
+                             
+                                  Gallery.array = JSON.parse(xhr.responseText);
+                                  console.log(Gallery.array);
+                                  Gallery.LoadImages();
+                                  
+                       }
+                       else{
+                           console.log("Fail!");
+                           
+                       }
                      }
+                     }
+                     
+                     
+                    
  
              },
 /***************** End of AJAX request ********************/   
@@ -95,11 +113,15 @@ var Gallery={
                   var cell = document.createElement("td"); 
                   var img = document.createElement("img");
                   img.setAttribute("class","thumbs");
-                  img.src = Gallery.array[i*3+j].thumbURL; 
+                  if((i*3+j)<Gallery.array.length){
+                     img.src = Gallery.array[i*3+j].thumbURL;
+                  }
+                  
                   link.setAttribute("id",i*3+j);
                   
-                  link.url = Gallery.array[i*3+j].URL; 
-                  
+                   if((i*3+j)<Gallery.array.length){
+                      link.url = Gallery.array[i*3+j].URL;
+                   }
                   
                   link.appendChild(img); 
                   cell.appendChild(link);
