@@ -36,18 +36,7 @@ var Gallery={
                      xhr.open("GET", URL, true);
                      xhr.send(null); 
                      xhr.onreadystatechange = function(){
-                    /* if((xhr.readyState === 4 && xhr.status===200) || xhr.status==304){
-                             
-                                  Gallery.array = JSON.parse(xhr.responseText);
-                                  console.log(Gallery.array);
-                                  Gallery.LoadImages();
-                                  
-                       }
-                       else{
-                           console.log("hej");
-                           
-                       }
-                     }*/
+                    
                      if(xhr.readyState === 4){
                          
                          if(xhr.status===200){
@@ -100,36 +89,39 @@ var Gallery={
       
 /* Nested for-loops that creates table in which thumbnails of the pictures are presented*/      
       
-     for(i=0; i<Gallery.array.length/3;++i){
-      	
-      	var row = document.createElement("tr"); 
-            table.appendChild(row); 
+     
+     for(i=0; i<Gallery.array.length;i++){
 
-      	
-      	for(j=0; j<3; ++j){
-      		
       		var link = document.createElement("a");
       		link.href = "#"; 
-                  var cell = document.createElement("td"); 
+                  
                   var img = document.createElement("img");
                   img.setAttribute("class","thumbs");
-                  if((i*3+j)<Gallery.array.length){
-                     img.src = Gallery.array[i*3+j].thumbURL;
+                 
+                  if((i)<Gallery.array.length){
+                     
+                     img.src = Gallery.array[i].thumbURL;
                   }
                   
-                  link.setAttribute("id",i*3+j);
                   
-                   if((i*3+j)<Gallery.array.length){
-                      link.url = Gallery.array[i*3+j].URL;
+                  link.setAttribute("id",i);
+                  
+                  
+                   if((i)<Gallery.array.length){
+                     
+                      link.url = Gallery.array[i].URL;
                    }
                   
                   link.appendChild(img); 
-                  cell.appendChild(link);
-                  cell.setAttribute("width",width);
-                  cell.setAttribute("height",height);
+                  
+                  link.setAttribute("width",width);
+                  link.setAttribute("height",height);
+                  img.setAttribute("width",width);
+                  img.setAttribute("height",height);
+                  
                  
-                 row.appendChild(cell); 
-                 
+                
+                  document.querySelector(".wincontent").appendChild(link);
                  
                  link.onclick = function() { 
           
@@ -141,16 +133,16 @@ var Gallery={
                               pwdBody.setAttribute("style","background-image:url("+Gallery.array[n].URL+")"); 
                               break;
                           }
-                      }
+                     
         
       	        }
-      	table.appendChild(row);
+      
       }
       
       
       }; 
      
-      document.querySelector(".wincontent").appendChild(table);
+     
       
       var load= document.getElementById("load");
       document.querySelector(".winfooter").removeChild(load);
